@@ -6,9 +6,9 @@ import Navigation from './components/Navigation';
 function App() {
   return (
     <Router>
-      <div className="bg-gray-100 min-h-screen">
+      <div className="bg-gray-50 min-h-screen">
         <Navigation />
-        <main className="container mx-auto p-4">
+        <main>
           <Routes>
             <Route path="/builder" element={<FormBuilderScreen />} />
             <Route path="/renderer" element={<FormRendererScreen />} />

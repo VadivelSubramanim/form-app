@@ -1,42 +1,187 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Form.io Modal Overrides */
+/* ==================== FORM.IO CORE OVERRIDES ==================== */
+
+/* Form Container Styling */
+.formio-form {
+  @apply font-sans;
+}
+
+/* Component Labels */
+.formio-component label {
+  @apply text-sm font-semibold text-gray-700 mb-2 block;
+}
+
+.formio-component label.field-required:after {
+  @apply text-red-500 ml-1;
+}
+
+/* Input Fields */
+.formio-component input[type="text"],
+.formio-component input[type="email"],
+.formio-component input[type="number"],
+.formio-component input[type="password"],
+.formio-component input[type="tel"],
+.formio-component input[type="url"],
+.formio-component textarea,
+.formio-component select {
+  @apply w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200;
+}
+
+.formio-component input:focus,
+.formio-component textarea:focus,
+.formio-component select:focus {
+  @apply outline-none shadow-md;
+}
+
+/* Textarea Specific */
+.formio-component textarea {
+  @apply min-h-[100px];
+  resize: vertical;
+}
+
+/* Select Dropdown */
+.formio-component select {
+  @apply bg-white cursor-pointer;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+}
+
+/* Checkbox & Radio Buttons */
+.formio-component input[type="checkbox"],
+.formio-component input[type="radio"] {
+  @apply w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500 focus:ring-2 cursor-pointer;
+}
+
+.formio-component .form-check-label {
+  @apply ml-2 text-gray-700 cursor-pointer select-none;
+}
+
+.formio-component .form-check {
+  @apply flex items-center py-2;
+}
+
+/* Buttons */
+.formio-component button[type="submit"],
+.formio-component .btn-primary {
+  @apply bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-lg;
+}
+
+.formio-component .btn-secondary {
+  @apply bg-gray-200 text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-all duration-300;
+}
+
+.formio-component .btn-danger {
+  @apply bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-all duration-300;
+}
+
+.formio-component .btn-success {
+  @apply bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-all duration-300;
+}
+
+/* Help Text */
+.formio-component .form-text {
+  @apply text-sm text-gray-500 mt-1 block;
+}
+
+/* Error Messages */
+.formio-component .formio-errors {
+  @apply mt-2;
+}
+
+.formio-component .formio-errors .error {
+  @apply text-red-600 text-sm font-medium bg-red-50 px-3 py-2 rounded-md border border-red-200;
+}
+
+/* Component Spacing */
+.formio-component {
+  @apply mb-6;
+}
+
+/* ==================== FORM.IO BUILDER OVERRIDES ==================== */
+
+/* Builder Sidebar */
+.formio-builder-sidebar {
+  @apply bg-white border-r border-gray-200 shadow-sm;
+}
+
+.formio-builder-group-header {
+  @apply bg-gray-100 text-gray-800 font-semibold px-4 py-3 cursor-pointer hover:bg-gray-200 transition-colors;
+}
+
+.formio-builder-component {
+  @apply border border-gray-200 rounded-lg p-3 m-2 cursor-move hover:border-blue-400 hover:shadow-md transition-all duration-200 bg-white;
+}
+
+/* Builder Component Drag */
+.formio-component-dragging {
+  @apply opacity-50;
+}
+
+/* Component Settings Panel */
+.component-settings {
+  @apply bg-white rounded-lg shadow-lg p-6;
+}
+
+.component-settings h3 {
+  @apply text-xl font-bold text-gray-800 mb-4 pb-2 border-b;
+}
+
+/* Tabs in Builder */
+.formio-dialog .nav-tabs {
+  @apply border-b-2 border-gray-200 mb-4;
+}
+
+.formio-dialog .nav-tabs .nav-link {
+  @apply px-4 py-2 text-gray-600 hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600 transition-colors cursor-pointer;
+}
+
+.formio-dialog .nav-tabs .nav-link.active {
+  @apply text-blue-600 border-blue-600 font-semibold;
+}
+
+/* ==================== MODAL OVERRIDES ==================== */
+
 .formio-dialog-overlay {
   @apply bg-black bg-opacity-50;
+  backdrop-filter: blur(4px);
 }
 
 .formio-dialog-content {
-  @apply bg-white rounded-xl shadow-2xl border-0;
+  @apply bg-white rounded-2xl shadow-2xl border-0 max-w-4xl w-full mx-auto;
 }
 
 .formio-dialog-close {
-  @apply text-gray-400 hover:text-gray-600 text-3xl font-light;
-  top: 10px;
-  right: 15px;
+  @apply text-gray-400 hover:text-gray-600 text-4xl font-light cursor-pointer transition-colors;
+  top: 15px;
+  right: 20px;
 }
 
 .formio-dialog-content .formio-component-modal-header {
-  @apply bg-gray-100 text-gray-800 text-xl font-bold p-6 rounded-t-xl border-b;
+  @apply bg-gradient-to-r from-blue-50 to-gray-50 text-gray-800 text-2xl font-bold p-6 rounded-t-2xl border-b-2 border-gray-200;
 }
 
 .formio-dialog-content .formio-component-modal-body {
-  @apply p-6;
+  @apply p-6 overflow-y-auto;
+  max-height: 60vh;
 }
 
 .formio-dialog-content .formio-component-modal-footer {
-  @apply bg-gray-100 p-4 rounded-b-xl border-t;
+  @apply bg-gray-50 p-5 rounded-b-2xl border-t-2 border-gray-200 flex justify-end gap-3;
 }
 
-/* Button overrides within modals */
+/* Modal Buttons */
 .formio-dialog-content .btn {
-  @apply px-4 py-2 rounded-lg font-semibold transition-colors duration-300;
+  @apply px-5 py-2.5 rounded-lg font-semibold transition-all duration-300 shadow-sm;
 }
 
 .formio-dialog-content .btn-primary {
-  @apply bg-blue-600 text-white hover:bg-blue-700;
+  @apply bg-blue-600 text-white hover:bg-blue-700 hover:shadow-md;
 }
 
 .formio-dialog-content .btn-secondary {
@@ -45,4 +190,44 @@
 
 .formio-dialog-content .btn-danger {
   @apply bg-red-600 text-white hover:bg-red-700;
+}
+
+/* ==================== CUSTOM ANIMATIONS ==================== */
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.formio-component {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* ==================== ACCESSIBILITY ==================== */
+
+.formio-component input:focus-visible,
+.formio-component textarea:focus-visible,
+.formio-component select:focus-visible,
+.formio-component button:focus-visible {
+  @apply outline-none ring-2 ring-blue-500 ring-offset-2;
+}
+
+/* ==================== RESPONSIVE OVERRIDES ==================== */
+
+@media (max-width: 768px) {
+  .formio-component input,
+  .formio-component textarea,
+  .formio-component select {
+    @apply text-base;
+  }
+  
+  .formio-dialog-content {
+    @apply rounded-lg mx-4;
+  }
 }
